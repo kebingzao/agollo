@@ -52,9 +52,11 @@ func NewClient(conf *Conf) *Client {
 func (c *Client) Start() error {
 
 	// preload all config to local first
-	if err := c.preload(); err != nil {
-		return err
-	}
+	//if err := c.preload(); err != nil {
+	//	return err
+	//}
+	go c.preload()
+
 
 	// start fetch update
 	go c.longPoller.start()
